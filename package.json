@@ -1,0 +1,9 @@
+{
+  "name": "todo-sobre-ruedas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-data": "node scripts/generate-data.js",
+    "build": "node scripts/generate-data.js"
+  }
+}
