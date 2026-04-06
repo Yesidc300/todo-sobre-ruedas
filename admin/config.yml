@@ -5,8 +5,6 @@ backend:
 media_folder: "productos/banner/imagenes"
 public_folder: "/productos/banner/imagenes"
 
-publish_mode: editorial_workflow
-
 collections:
   - name: "productos"
     label: "Productos"
