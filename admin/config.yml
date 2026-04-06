@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "productos/imagenes"
+public_folder: "/productos/imagenes"
+
+collections:
+  - name: "products"
+    label: "Productos"
+    files:
+      - file: "productos/data.json"
+        label: "Listado de productos"
+        name: "productos_file"
+        fields:
+          - name: "productos"
+            label: "Productos"
+            widget: "list"
+            collapsed: true
+            label_singular: "Producto"
+            fields:
+              - { name: "imagen", label: "Imagen principal", widget: "image" }
+              - name: "galeria"
+                label: "Galería (fotos adicionales)"
+                widget: "list"
+                required: false
+                field: { name: "url", label: "Imagen", widget: "image" }
+              - name: "categoria"
+                label: "Categoría"
+                widget: "select"
+                options:
+                  - { label: "Patines en línea", value: "Patines en línea" }
+                  - { label: "Patines artísticos", value: "Patines artísticos" }
+                  - { label: "Skateboard", value: "Skateboard" }
+                  - { label: "Longboard", value: "Longboard" }
+                  - { label: "Scooters", value: "Scooters" }
+                  - { label: "Niños", value: "Niños" }
+                  - { label: "Accesorios", value: "Accesorios" }
+                  - { label: "Seguridad", value: "Seguridad" }
+                  - { label: "Balones", value: "Balones" }
+                  - { label: "Patines eléctricos", value: "Patines eléctricos" }
+              - { name: "nombre", label: "Nombre del producto", widget: "string" }
+              - { name: "descripcion", label: "Descripción", widget: "text" }
+              - { name: "precio", label: "Precio (en pesos colombianos)", widget: "number", required: false, value_type: "int" }
+              - { name: "precioAntes", label: "Precio anterior — tachado (opcional)", widget: "number", required: false, value_type: "int" }
+              - name: "badge"
+                label: "Etiqueta especial (opcional)"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "— Sin etiqueta —", value: "" }
+                  - { label: "Nuevo", value: "Nuevo" }
+                  - { label: "Destacado", value: "Destacado" }
+                  - { label: "Eléctrico", value: "Eléctrico" }
+                  - { label: "Oferta", value: "Oferta" }
+                  - { label: "Semiprofesional", value: "Semiprofesional" }

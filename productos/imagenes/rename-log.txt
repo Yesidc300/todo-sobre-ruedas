@@ -1,0 +1,89 @@
+productos/imagenes/accesorios/bolso de patines diseño.jpg -> productos/imagenes/accesorios/bolso-de-patines-diseno.jpg
+productos/imagenes/accesorios/bolso de patines infantil diseños 1.jpg -> productos/imagenes/accesorios/bolso-de-patines-infantil-disenos-1.jpg
+productos/imagenes/accesorios/bolso de patines infantil diseños 2.jpg -> productos/imagenes/accesorios/bolso-de-patines-infantil-disenos-2.jpg
+productos/imagenes/accesorios/bolso de patines infantil diseños.jpg -> productos/imagenes/accesorios/bolso-de-patines-infantil-disenos.jpg
+productos/imagenes/accesorios/bolso de patines infantil.jpg -> productos/imagenes/accesorios/bolso-de-patines-infantil.jpg
+productos/imagenes/accesorios/bolso de patines.jpg -> productos/imagenes/accesorios/bolso-de-patines.jpg
+productos/imagenes/accesorios/kit de rodamientos completo.jpg -> productos/imagenes/accesorios/kit-de-rodamientos-completo.jpg
+productos/imagenes/accesorios/kit de rodaminetos.jpg -> productos/imagenes/accesorios/kit-de-rodaminetos.jpg
+productos/imagenes/accesorios/mangas deportivas.jpg -> productos/imagenes/accesorios/mangas-deportivas.jpg
+productos/imagenes/accesorios/ruedas de patines repuestos.jpg -> productos/imagenes/accesorios/ruedas-de-patines-repuestos.jpg
+productos/imagenes/accesorios/traje licra diseño 1.jpg -> productos/imagenes/accesorios/traje-licra-diseno-1.jpg
+productos/imagenes/accesorios/traje licra diseño 2.jpg -> productos/imagenes/accesorios/traje-licra-diseno-2.jpg
+productos/imagenes/accesorios/traje licra diseño 3.jpg -> productos/imagenes/accesorios/traje-licra-diseno-3.jpg
+productos/imagenes/accesorios/traje licra diseño 4.jpg -> productos/imagenes/accesorios/traje-licra-diseno-4.jpg
+productos/imagenes/accesorios/traje licra diseño.jpg -> productos/imagenes/accesorios/traje-licra-diseno.jpg
+productos/imagenes/accesorios/traje licra infantil diseño f.jpg -> productos/imagenes/accesorios/traje-licra-infantil-diseno-f.jpg
+productos/imagenes/accesorios/traje licra infantil diseño.jpg -> productos/imagenes/accesorios/traje-licra-infantil-diseno.jpg
+productos/imagenes/accesorios/traje licra negro adulto.jpg -> productos/imagenes/accesorios/traje-licra-negro-adulto.jpg
+productos/imagenes/ninos/bicicleta de impulso niño color morada.jpg -> productos/imagenes/ninos/bicicleta-de-impulso-nino-color-morada.jpg
+productos/imagenes/ninos/bicicleta de impulso niño descripcion.jpg -> productos/imagenes/ninos/bicicleta-de-impulso-nino-descripcion.jpg
+productos/imagenes/ninos/bicicleta de impulso niño diseño negra.jpg -> productos/imagenes/ninos/bicicleta-de-impulso-nino-diseno-negra.jpg
+productos/imagenes/ninos/bicicleta de impulso niño diseño.jpg -> productos/imagenes/ninos/bicicleta-de-impulso-nino-diseno.jpg
+productos/imagenes/ninos/monopatin 5 en 1 scooter morado.jpg -> productos/imagenes/ninos/monopatin-5-en-1-scooter-morado.jpg
+productos/imagenes/ninos/monopatin bebe.jpg -> productos/imagenes/ninos/monopatin-bebe.jpg
+productos/imagenes/ninos/monopatin diseño infantil.jpg -> productos/imagenes/ninos/monopatin-diseno-infantil.jpg
+productos/imagenes/ninos/monopatin infantil diseño 1.jpg -> productos/imagenes/ninos/monopatin-infantil-diseno-1.jpg
+productos/imagenes/ninos/monopatin infantil diseño.jpg -> productos/imagenes/ninos/monopatin-infantil-diseno.jpg
+productos/imagenes/ninos/monopatin niño diseños.jpg -> productos/imagenes/ninos/monopatin-nino-disenos.jpg
+productos/imagenes/ninos/monopatin princesa.jpg -> productos/imagenes/ninos/monopatin-princesa.jpg
+productos/imagenes/ninos/patin de aprendizaje descripcion 1.jpg -> productos/imagenes/ninos/patin-de-aprendizaje-descripcion-1.jpg
+productos/imagenes/ninos/patin de aprendizaje descripcion.jpg -> productos/imagenes/ninos/patin-de-aprendizaje-descripcion.jpg
+productos/imagenes/ninos/patin de aprendizaje morado.jpg -> productos/imagenes/ninos/patin-de-aprendizaje-morado.jpg
+productos/imagenes/ninos/patin de aprendizaje rosado.jpg -> productos/imagenes/ninos/patin-de-aprendizaje-rosado.jpg
+productos/imagenes/ninos/patin scooter infantil.jpg -> productos/imagenes/ninos/patin-scooter-infantil.jpg
+productos/imagenes/ninos/patines chicos skate negro.jpg -> productos/imagenes/ninos/patines-chicos-skate-negro.jpg
+productos/imagenes/ninos/patines chicos skate rosados.jpg -> productos/imagenes/ninos/patines-chicos-skate-rosados.jpg
+productos/imagenes/ninos/patinetas infantiles tablas.jpg -> productos/imagenes/ninos/patinetas-infantiles-tablas.jpg
+productos/imagenes/patines/patin humo azul.jpg -> productos/imagenes/patines/patin-humo-azul.jpg
+productos/imagenes/patines/patin humo colores.jpg -> productos/imagenes/patines/patin-humo-colores.jpg
+productos/imagenes/patines/patin humo descripcion.jpg -> productos/imagenes/patines/patin-humo-descripcion.jpg
+productos/imagenes/patines/patin humo.jpg -> productos/imagenes/patines/patin-humo.jpg
+productos/imagenes/patines/patin sport runner.jpg -> productos/imagenes/patines/patin-sport-runner.jpg
+productos/imagenes/patines/patines black magic negros.jpg -> productos/imagenes/patines/patines-black-magic-negros.jpg
+productos/imagenes/patines/patines canariam morados con negro.jpg -> productos/imagenes/patines/patines-canariam-morados-con-negro.jpg
+productos/imagenes/patines/patines canariam negros negro.jpg -> productos/imagenes/patines/patines-canariam-negros-negro.jpg
+productos/imagenes/patines/patines canariam negros.jpg -> productos/imagenes/patines/patines-canariam-negros.jpg
+productos/imagenes/patines/patines canariam rosados descripcion.jpg -> productos/imagenes/patines/patines-canariam-rosados-descripcion.jpg
+productos/imagenes/patines/patines canariam rosados.jpg -> productos/imagenes/patines/patines-canariam-rosados.jpg
+productos/imagenes/patines/patines canarim morados.jpg -> productos/imagenes/patines/patines-canarim-morados.jpg
+productos/imagenes/patines/patines chicago azul.jpg -> productos/imagenes/patines/patines-chicago-azul.jpg
+productos/imagenes/patines/patines chicago morado.jpg -> productos/imagenes/patines/patines-chicago-morado.jpg
+productos/imagenes/patines/patines cityrun azul.jpg -> productos/imagenes/patines/patines-cityrun-azul.jpg
+productos/imagenes/patines/patines cityrun colores 1.jpg -> productos/imagenes/patines/patines-cityrun-colores-1.jpg
+productos/imagenes/patines/patines cityrun colores.jpg -> productos/imagenes/patines/patines-cityrun-colores.jpg
+productos/imagenes/patines/patines cityrun morado.jpg -> productos/imagenes/patines/patines-cityrun-morado.jpg
+productos/imagenes/patines/patines cityrun negro morado.jpg -> productos/imagenes/patines/patines-cityrun-negro-morado.jpg
+productos/imagenes/patines/patines cityrun negro.jpg -> productos/imagenes/patines/patines-cityrun-negro.jpg
+productos/imagenes/patines/patines coogar negro.jpg -> productos/imagenes/patines/patines-coogar-negro.jpg
+productos/imagenes/patines/patines sport runner morados.jpg -> productos/imagenes/patines/patines-sport-runner-morados.jpg
+productos/imagenes/patines/patines sport runner rosados.jpg -> productos/imagenes/patines/patines-sport-runner-rosados.jpg
+productos/imagenes/scooters/monopatin 5 en 1 scooter morado.jpg -> productos/imagenes/scooters/monopatin-5-en-1-scooter-morado.jpg
+productos/imagenes/scooters/monopatin 5 en 1 scooter rojo.jpg -> productos/imagenes/scooters/monopatin-5-en-1-scooter-rojo.jpg
+productos/imagenes/scooters/monopatin scooter azul.jpg -> productos/imagenes/scooters/monopatin-scooter-azul.jpg
+productos/imagenes/scooters/monopatin scooter grande negro-morado.jpg -> productos/imagenes/scooters/monopatin-scooter-grande-negro-morado.jpg
+productos/imagenes/scooters/monopatin scooter grande rojo descripcion.jpg -> productos/imagenes/scooters/monopatin-scooter-grande-rojo-descripcion.jpg
+productos/imagenes/scooters/monopatin scooter grande rojo.jpg -> productos/imagenes/scooters/monopatin-scooter-grande-rojo.jpg
+productos/imagenes/scooters/monopatin scooter grande verde.jpg -> productos/imagenes/scooters/monopatin-scooter-grande-verde.jpg
+productos/imagenes/scooters/monopatin scooter verde.jpg -> productos/imagenes/scooters/monopatin-scooter-verde.jpg
+productos/imagenes/scooters/monopatin scooter.jpg -> productos/imagenes/scooters/monopatin-scooter.jpg
+productos/imagenes/seguridad/casco bicicleta rollerpoints azul.jpg -> productos/imagenes/seguridad/casco-bicicleta-rollerpoints-azul.jpg
+productos/imagenes/seguridad/casco bicicleta rollerpoints negro.jpg -> productos/imagenes/seguridad/casco-bicicleta-rollerpoints-negro.jpg
+productos/imagenes/seguridad/casco bicicleta rollerpoints rosado.jpg -> productos/imagenes/seguridad/casco-bicicleta-rollerpoints-rosado.jpg
+productos/imagenes/seguridad/casco completo bicicleta.jpg -> productos/imagenes/seguridad/casco-completo-bicicleta.jpg
+productos/imagenes/seguridad/protecciones coderas.jpg -> productos/imagenes/seguridad/protecciones-coderas.jpg
+productos/imagenes/seguridad/protecciones infantiles colores.jpg -> productos/imagenes/seguridad/protecciones-infantiles-colores.jpg
+productos/imagenes/skates/patineta 2 ruedas dieños.jpg -> productos/imagenes/skates/patineta-2-ruedas-dienos.jpg
+productos/imagenes/skates/patineta 2 ruedas.jpg -> productos/imagenes/skates/patineta-2-ruedas.jpg
+productos/imagenes/skates/patineta pequeña color solido cian.jpg -> productos/imagenes/skates/patineta-pequena-color-solido-cian.jpg
+productos/imagenes/skates/patineta pequeña color solido verde.jpg -> productos/imagenes/skates/patineta-pequena-color-solido-verde.jpg
+productos/imagenes/skates/patineta pequeña color solido.jpg -> productos/imagenes/skates/patineta-pequena-color-solido.jpg
+productos/imagenes/skates/patineta pequeña diseño 1.jpg -> productos/imagenes/skates/patineta-pequena-diseno-1.jpg
+productos/imagenes/skates/patineta pequeña diseño 2.jpg -> productos/imagenes/skates/patineta-pequena-diseno-2.jpg
+productos/imagenes/skates/patineta pequeña.jpg -> productos/imagenes/skates/patineta-pequena.jpg
+productos/imagenes/skates/patinetas grandes diseños 1.jpg -> productos/imagenes/skates/patinetas-grandes-disenos-1.jpg
+productos/imagenes/skates/patinetas grandes diseños 2.jpg -> productos/imagenes/skates/patinetas-grandes-disenos-2.jpg
+productos/imagenes/skates/patinetas grandes diseños 3.jpg -> productos/imagenes/skates/patinetas-grandes-disenos-3.jpg
+productos/imagenes/skates/patinetas grandes diseños 4.jpg -> productos/imagenes/skates/patinetas-grandes-disenos-4.jpg
+productos/imagenes/skates/patinetas grandes diseños.jpg -> productos/imagenes/skates/patinetas-grandes-disenos.jpg
+productos/imagenes/skates/patinetas grandes.jpg -> productos/imagenes/skates/patinetas-grandes.jpg
