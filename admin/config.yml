@@ -1,11 +1,11 @@
 backend:
   name: git-gateway
-  branch: main # Cambia a la rama que uses (ej. master) si aplica
+  branch: main
 
-media_folder: "productos/banner/imagenes" # carpeta en el repo donde quedarán las imágenes subidas
+media_folder: "productos/banner/imagenes"
 public_folder: "/productos/banner/imagenes"
 
-publish_mode: editorial_workflow # opcional, quita si no quieres workflow editorial
+publish_mode: editorial_workflow
 
 collections:
   - name: "productos"
@@ -13,76 +13,49 @@ collections:
     folder: "productos/contenido"
     create: true
     slug: "{{slug}}"
-    media_folder: "../banner/imagenes" # relativo a la carpeta de los productos
+    media_folder: "../banner/imagenes"
     public_folder: "/productos/banner/imagenes"
     extension: "json"
     fields:
-      - { label: "Título", name: "titulo", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "usa este campo en la URL, p.e. patin-x" }
-      - { label: "ID", name: "id", widget: "string", required: false }
-      - { label: "Descripción", name: "descripcion", widget: "text" }
-      - { label: "Precio", name: "precio", widget: "number" }
-      - { label: "Imagen", name: "imagen", widget: "image", required: false }
-      - { label: "Categoría", name: "categoria", widget: "string" }
-      - { label: "Disponible", name: "disponible", widget: "boolean", default: true }
-      - { label: "Metadatos (opcional)", name: "meta", widget: "object", required: false, fields:
-          - { label: "marca", name: "marca", widget: "string", required: false }
-          - { label: "peso", name: "peso", widget: "string", required: false }
-        }
-
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "productos/imagenes"
-public_folder: "/productos/imagenes"
-
-collections:
-  - name: "products"
-    label: "Productos"
-    files:
-      - file: "productos/data.json"
-        label: "Listado de productos"
-        name: "productos_file"
+      - label: "Título"
+        name: "titulo"
+        widget: "string"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        hint: "usa este campo en la URL, p.e. patin-x"
+      - label: "ID"
+        name: "id"
+        widget: "string"
+        required: false
+      - label: "Descripción"
+        name: "descripcion"
+        widget: "text"
+      - label: "Precio"
+        name: "precio"
+        widget: "number"
+      - label: "Imagen"
+        name: "imagen"
+        widget: "image"
+        required: false
+      - label: "Categoría"
+        name: "categoria"
+        widget: "string"
+      - label: "Disponible"
+        name: "disponible"
+        widget: "boolean"
+        default: true
+      - label: "Metadatos (opcional)"
+        name: "meta"
+        widget: "object"
+        required: false
         fields:
-          - name: "productos"
-            label: "Productos"
-            widget: "list"
-            collapsed: true
-            label_singular: "Producto"
-            fields:
-              - { name: "imagen", label: "Imagen principal", widget: "image" }
-              - name: "galeria"
-                label: "Galería (fotos adicionales)"
-                widget: "list"
-                required: false
-                field: { name: "url", label: "Imagen", widget: "image" }
-              - name: "categoria"
-                label: "Categoría"
-                widget: "select"
-                options:
-                  - { label: "Patines en línea", value: "Patines en línea" }
-                  - { label: "Patines artísticos", value: "Patines artísticos" }
-                  - { label: "Skateboard", value: "Skateboard" }
-                  - { label: "Longboard", value: "Longboard" }
-                  - { label: "Scooters", value: "Scooters" }
-                  - { label: "Niños", value: "Niños" }
-                  - { label: "Accesorios", value: "Accesorios" }
-                  - { label: "Seguridad", value: "Seguridad" }
-                  - { label: "Balones", value: "Balones" }
-                  - { label: "Patines eléctricos", value: "Patines eléctricos" }
-              - { name: "nombre", label: "Nombre del producto", widget: "string" }
-              - { name: "descripcion", label: "Descripción", widget: "text" }
-              - { name: "precio", label: "Precio (en pesos colombianos)", widget: "number", required: false, value_type: "int" }
-              - { name: "precioAntes", label: "Precio anterior — tachado (opcional)", widget: "number", required: false, value_type: "int" }
-              - name: "badge"
-                label: "Etiqueta especial (opcional)"
-                widget: "select"
-                required: false
-                options:
-                  - { label: "— Sin etiqueta —", value: "" }
-                  - { label: "Nuevo", value: "Nuevo" }
-                  - { label: "Destacado", value: "Destacado" }
-                  - { label: "Eléctrico", value: "Eléctrico" }
-                  - { label: "Oferta", value: "Oferta" }
-                  - { label: "Semiprofesional", value: "Semiprofesional" }
+          - label: "marca"
+            name: "marca"
+            widget: "string"
+            required: false
+          - label: "peso"
+            name: "peso"
+            widget: "string"
+            required: false
+
