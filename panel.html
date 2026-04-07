@@ -58,7 +58,9 @@ button {
   <textarea id="descripcion" placeholder="Descripción"></textarea>
   <input id="categoria" placeholder="Categoría">
   <input id="precio" placeholder="Precio">
-  <input id="imagen" placeholder="URL Imagen">
+
+  <!-- 📸 Subir imagen desde PC -->
+  <input type="file" id="imagenFile">
 
   <button onclick="crear()">Crear Producto</button>
 </div>
@@ -68,12 +70,45 @@ button {
 <script>
 const API = "https://backend-catalogo-r31s.onrender.com";
 
+// 🔐 Validación admin
 if (!localStorage.getItem("admin")) {
   alert("No autorizado");
   window.location.href = "admin.html";
 }
 
+// ☁️ CONFIGURACIÓN CLOUDINARY
+const CLOUD_NAME = "dlnw3ss7h";
+const UPLOAD_PRESET = "unsigned_preset";
+
+// 📤 Subir imagen a Cloudinary
+async function subirImagen(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", UPLOAD_PRESET);
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
+
+  const data = await res.json();
+  return data.secure_url;
+}
+
+// 🟢 Crear producto
 async function crear() {
+  const file = document.getElementById("imagenFile").files[0];
+
+  if (!file) {
+    alert("Selecciona una imagen");
+    return;
+  }
+
+  const imagenUrl = await subirImagen(file);
+
   await fetch(API + "/productos", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -82,7 +117,7 @@ async function crear() {
       descripcion: descripcion.value,
       categoria: categoria.value,
       precio: precio.value,
-      imagen: imagen.value,
+      imagen: imagenUrl,
       galeria: "",
       badge: ""
     })
@@ -92,6 +127,7 @@ async function crear() {
   cargar();
 }
 
+// 🔄 Cargar productos
 async function cargar() {
   const res = await fetch(API + "/productos");
   const data = await res.json();
@@ -102,16 +138,17 @@ async function cargar() {
   data.forEach(p => {
     lista.innerHTML += `
       <div class="producto">
-        <img src="${p.imagen}" width="100"><br>
+        <img src="${p.imagen}" width="120"><br>
         <b>${p.nombre}</b><br>
         ${p.descripcion}<br>
-        $${p.precio}<br>
+        💲 ${p.precio}<br>
         <button onclick="eliminar(${p.id})">Eliminar</button>
       </div>
     `;
   });
 }
 
+// 🗑 Eliminar producto
 async function eliminar(id) {
   await fetch(API + "/productos/" + id, {
     method: "DELETE"
