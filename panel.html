@@ -1,0 +1,58 @@
+<h2>Panel Admin</h2>
+
+<input id="nombre" placeholder="Nombre">
+<input id="precio" placeholder="Precio">
+
+<button onclick="crear()">Crear Producto</button>
+
+<div id="lista"></div>
+
+<script>
+const API = "https://backend-catalogo-r31s.onrender.com/productos";
+
+// 🔹 crear producto
+async function crear() {
+  await fetch(API + "/productos", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      nombre: nombre.value,
+      precio: precio.value
+    })
+  });
+
+  alert("Creado");
+  cargar();
+}
+
+// 🔹 cargar productos
+async function cargar() {
+  const res = await fetch(API + "/productos");
+  const data = await res.json();
+
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  data.forEach(p => {
+    lista.innerHTML += `
+      <div>
+        ${p.nombre} - $${p.precio}
+        <button onclick="eliminar(${p.id})">Eliminar</button>
+      </div>
+    `;
+  });
+}
+
+// 🔹 eliminar
+async function eliminar(id) {
+  await fetch(API + "/productos/" + id, {
+    method: "DELETE"
+  });
+
+  alert("Eliminado");
+  cargar();
+}
+
+// cargar al iniciar
+cargar();
+</script>
