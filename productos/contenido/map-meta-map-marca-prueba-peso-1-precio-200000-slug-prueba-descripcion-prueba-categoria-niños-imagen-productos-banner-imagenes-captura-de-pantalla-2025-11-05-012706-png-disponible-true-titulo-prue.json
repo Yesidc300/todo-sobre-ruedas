@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "marca": "prueba",
+    "peso": "1"
+  },
+  "precio": 200000,
+  "slug": "prueba",
+  "descripcion": "prueba",
+  "categoria": "niños",
+  "imagen": "/productos/banner/imagenes/captura-de-pantalla-2025-11-05-012706.png",
+  "disponible": true,
+  "titulo": "prueba",
+  "id": "prueba"
+}
