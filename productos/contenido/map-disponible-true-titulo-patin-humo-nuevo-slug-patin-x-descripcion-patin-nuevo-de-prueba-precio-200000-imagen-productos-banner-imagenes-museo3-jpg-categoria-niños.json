@@ -1,0 +1,9 @@
+{
+  "disponible": true,
+  "titulo": "patin humo nuevo",
+  "slug": "patin-x",
+  "descripcion": "patin nuevo de prueba",
+  "precio": 200000,
+  "imagen": "/productos/banner/imagenes/museo3.jpg",
+  "categoria": "niños "
+}
