@@ -5,27 +5,35 @@
 
 <button onclick="crear()">Crear Producto</button>
 
+<hr>
+
 <div id="lista"></div>
 
 <script>
-const API = "https://backend-catalogo-r31s.onrender.com/productos";
+const API = "https://backend-catalogo-r31s.onrender.com";
 
-// 🔹 crear producto
+// 🔐 PROTECCIÓN
+if (!localStorage.getItem("admin")) {
+  alert("No autorizado");
+  window.location.href = "admin.html";
+}
+
+// 🔹 CREAR
 async function crear() {
   await fetch(API + "/productos", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      nombre: nombre.value,
-      precio: precio.value
+      nombre: document.getElementById("nombre").value,
+      precio: document.getElementById("precio").value
     })
   });
 
-  alert("Creado");
+  alert("Producto creado");
   cargar();
 }
 
-// 🔹 cargar productos
+// 🔹 CARGAR
 async function cargar() {
   const res = await fetch(API + "/productos");
   const data = await res.json();
@@ -35,7 +43,7 @@ async function cargar() {
 
   data.forEach(p => {
     lista.innerHTML += `
-      <div>
+      <div style="margin-bottom:10px;">
         ${p.nombre} - $${p.precio}
         <button onclick="eliminar(${p.id})">Eliminar</button>
       </div>
@@ -43,7 +51,7 @@ async function cargar() {
   });
 }
 
-// 🔹 eliminar
+// 🔹 ELIMINAR
 async function eliminar(id) {
   await fetch(API + "/productos/" + id, {
     method: "DELETE"
@@ -53,6 +61,6 @@ async function eliminar(id) {
   cargar();
 }
 
-// cargar al iniciar
+// INICIAR
 cargar();
 </script>
