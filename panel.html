@@ -7,18 +7,29 @@
 <style>
 body {
   font-family: Arial;
-  background: #1e1e2f;
+  background: #12121f;
   color: white;
-  padding: 20px;
+  margin: 0;
 }
 
-h2 {
+/* HEADER */
+header {
+  background: #1f1f35;
+  padding: 15px;
   text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.form {
-  background: #2f2f4f;
+/* CONTENEDOR */
+.container {
   padding: 20px;
+}
+
+/* FORM */
+.form {
+  background: #1f1f35;
+  padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
@@ -33,18 +44,49 @@ input, textarea {
 
 button {
   padding: 10px;
-  background: #00c3ff;
   border: none;
   border-radius: 5px;
-  color: white;
   cursor: pointer;
-  margin: 3px;
+  margin-top: 5px;
 }
 
-.producto {
-  background: #2f2f4f;
-  margin: 10px 0;
+.btn-primary { background: #00c3ff; color: white; }
+.btn-danger { background: red; color: white; }
+
+/* PRODUCTOS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #1f1f35;
   padding: 10px;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: #1f1f35;
+  width: 400px;
+  margin: 10% auto;
+  padding: 20px;
   border-radius: 10px;
 }
 </style>
@@ -52,58 +94,80 @@ button {
 
 <body>
 
-<h2>📦 Panel Admin PRO</h2>
+<header>📦 PANEL ADMIN PRO</header>
 
-<div class="form">
-  <input id="nombre" placeholder="Nombre">
-  <textarea id="descripcion" placeholder="Descripción"></textarea>
-  <input id="categoria" placeholder="Categoría">
-  <input id="precio" placeholder="Precio">
+<div class="container">
 
-  <input type="file" id="imagenFile">
+  <!-- FORM CREAR -->
+  <div class="form">
+    <h3>Crear Producto</h3>
+    <input id="nombre" placeholder="Nombre">
+    <textarea id="descripcion" placeholder="Descripción"></textarea>
+    <input id="categoria" placeholder="Categoría">
+    <input id="precio" placeholder="Precio">
+    <input type="file" id="imagen">
 
-  <button onclick="crear()">Crear Producto</button>
-  <button onclick="actualizar()">Actualizar Producto</button>
+    <img id="preview" width="100" style="display:none; margin-top:10px;">
+
+    <button class="btn-primary" onclick="crear()">Crear</button>
+  </div>
+
+  <!-- LISTA -->
+  <div class="grid" id="lista"></div>
+
 </div>
 
-<div id="lista"></div>
+<!-- MODAL EDITAR -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Editar Producto</h3>
+
+    <input id="editNombre">
+    <textarea id="editDescripcion"></textarea>
+    <input id="editCategoria">
+    <input id="editPrecio">
+    <input type="file" id="editImagen">
+
+    <button class="btn-primary" onclick="actualizar()">Actualizar</button>
+    <button class="btn-danger" onclick="cerrarModal()">Cancelar</button>
+  </div>
+</div>
 
 <script>
 const API = "https://backend-catalogo-r31s.onrender.com";
-
-if (!localStorage.getItem("admin")) {
-  alert("No autorizado");
-  window.location.href = "admin.html";
-}
-
-// ☁️ CLOUDINARY
 const CLOUD_NAME = "dlnw3ss7h";
 const UPLOAD_PRESET = "unsigned_preset";
 
-let productoEditando = null;
+let editId = null;
 
-// 📤 Subir imagen
+/* SUBIR IMAGEN */
 async function subirImagen(file) {
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", UPLOAD_PRESET);
+  const form = new FormData();
+  form.append("file", file);
+  form.append("upload_preset", UPLOAD_PRESET);
 
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-    { method: "POST", body: formData }
-  );
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+    method: "POST",
+    body: form
+  });
 
   const data = await res.json();
   return data.secure_url;
 }
 
-// 🟢 CREAR
-async function crear() {
-  const file = imagenFile.files[0];
+/* PREVIEW */
+imagen.onchange = () => {
+  const file = imagen.files[0];
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+};
 
+/* CREAR */
+async function crear() {
+  const file = imagen.files[0];
   if (!file) return alert("Selecciona imagen");
 
-  const imagenUrl = await subirImagen(file);
+  const url = await subirImagen(file);
 
   await fetch(API + "/productos", {
     method: "POST",
@@ -113,92 +177,80 @@ async function crear() {
       descripcion: descripcion.value,
       categoria: categoria.value,
       precio: precio.value,
-      imagen: imagenUrl,
-      galeria: "",
-      badge: ""
+      imagen: url
     })
   });
 
-  limpiar();
   cargar();
 }
 
-// ✏️ CARGAR EN FORMULARIO
-function editar(p) {
-  productoEditando = p.id;
-
-  nombre.value = p.nombre;
-  descripcion.value = p.descripcion;
-  categoria.value = p.categoria;
-  precio.value = p.precio;
-}
-
-// 🔄 ACTUALIZAR
-async function actualizar() {
-  if (!productoEditando) {
-    return alert("Selecciona un producto para editar");
-  }
-
-  let imagenUrl = "";
-
-  const file = imagenFile.files[0];
-
-  if (file) {
-    imagenUrl = await subirImagen(file);
-  }
-
-  await fetch(API + "/productos/" + productoEditando, {
-    method: "PUT",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      nombre: nombre.value,
-      descripcion: descripcion.value,
-      categoria: categoria.value,
-      precio: precio.value,
-      imagen: imagenUrl,
-      galeria: "",
-      badge: ""
-    })
-  });
-
-  limpiar();
-  cargar();
-}
-
-// 🧹 LIMPIAR FORM
-function limpiar() {
-  nombre.value = "";
-  descripcion.value = "";
-  categoria.value = "";
-  precio.value = "";
-  imagenFile.value = "";
-  productoEditando = null;
-}
-
-// 🔄 CARGAR
+/* CARGAR */
 async function cargar() {
   const res = await fetch(API + "/productos");
   const data = await res.json();
 
-  const lista = document.getElementById("lista");
   lista.innerHTML = "";
 
   data.forEach(p => {
     lista.innerHTML += `
-      <div class="producto">
-        <img src="${p.imagen}" width="120"><br>
-        <b>${p.nombre}</b><br>
-        ${p.descripcion}<br>
-        💲 ${p.precio}<br>
+      <div class="card">
+        <img src="${p.imagen}">
+        <b>${p.nombre}</b>
+        <p>${p.descripcion}</p>
+        <p>$ ${p.precio}</p>
 
-        <button onclick='editar(${JSON.stringify(p)})'>Editar</button>
-        <button onclick="eliminar(${p.id})">Eliminar</button>
+        <button class="btn-primary" onclick='abrirEditar(${JSON.stringify(p)})'>Editar</button>
+        <button class="btn-danger" onclick="eliminar(${p.id})">Eliminar</button>
       </div>
     `;
   });
 }
 
-// 🗑 ELIMINAR
+/* ABRIR MODAL */
+function abrirEditar(p) {
+  editId = p.id;
+
+  editNombre.value = p.nombre;
+  editDescripcion.value = p.descripcion;
+  editCategoria.value = p.categoria;
+  editPrecio.value = p.precio;
+
+  modal.style.display = "block";
+}
+
+/* CERRAR MODAL */
+function cerrarModal() {
+  modal.style.display = "none";
+}
+
+/* ACTUALIZAR */
+async function actualizar() {
+  let imagenUrl = null;
+
+  if (editImagen.files[0]) {
+    imagenUrl = await subirImagen(editImagen.files[0]);
+  }
+
+  const data = {
+    nombre: editNombre.value,
+    descripcion: editDescripcion.value,
+    categoria: editCategoria.value,
+    precio: editPrecio.value
+  };
+
+  if (imagenUrl) data.imagen = imagenUrl;
+
+  await fetch(API + "/productos/" + editId, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  cerrarModal();
+  cargar();
+}
+
+/* ELIMINAR */
 async function eliminar(id) {
   await fetch(API + "/productos/" + id, { method: "DELETE" });
   cargar();
