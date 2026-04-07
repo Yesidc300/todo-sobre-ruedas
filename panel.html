@@ -38,6 +38,7 @@ button {
   border-radius: 5px;
   color: white;
   cursor: pointer;
+  margin: 3px;
 }
 
 .producto {
@@ -59,7 +60,6 @@ button {
   <input id="categoria" placeholder="Categoría">
   <input id="precio" placeholder="Precio">
 
-  <!-- 📸 Subir imagen desde PC -->
   <input type="file" id="imagenFile">
 
   <button onclick="crear()">Crear Producto</button>
@@ -76,11 +76,11 @@ if (!localStorage.getItem("admin")) {
   window.location.href = "admin.html";
 }
 
-// ☁️ CONFIGURACIÓN CLOUDINARY
+// ☁️ CLOUDINARY
 const CLOUD_NAME = "dlnw3ss7h";
 const UPLOAD_PRESET = "unsigned_preset";
 
-// 📤 Subir imagen a Cloudinary
+// 📤 Subir imagen
 async function subirImagen(file) {
   const formData = new FormData();
   formData.append("file", file);
@@ -98,9 +98,9 @@ async function subirImagen(file) {
   return data.secure_url;
 }
 
-// 🟢 Crear producto
+// 🟢 CREAR
 async function crear() {
-  const file = document.getElementById("imagenFile").files[0];
+  const file = imagenFile.files[0];
 
   if (!file) {
     alert("Selecciona una imagen");
@@ -123,11 +123,10 @@ async function crear() {
     })
   });
 
-  alert("Producto creado");
   cargar();
 }
 
-// 🔄 Cargar productos
+// 🔄 CARGAR
 async function cargar() {
   const res = await fetch(API + "/productos");
   const data = await res.json();
@@ -142,13 +141,42 @@ async function cargar() {
         <b>${p.nombre}</b><br>
         ${p.descripcion}<br>
         💲 ${p.precio}<br>
+
+        <button onclick="editar(${p.id})">Editar</button>
         <button onclick="eliminar(${p.id})">Eliminar</button>
       </div>
     `;
   });
 }
 
-// 🗑 Eliminar producto
+// ✏️ EDITAR (IMPORTANTE)
+async function editar(id) {
+  const nombreNuevo = prompt("Nuevo nombre:");
+  const descripcionNueva = prompt("Nueva descripción:");
+  const categoriaNueva = prompt("Nueva categoría:");
+  const precioNuevo = prompt("Nuevo precio:");
+
+  if (!nombreNuevo) return;
+
+  await fetch(API + "/productos/" + id, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      nombre: nombreNuevo,
+      descripcion: descripcionNueva,
+      categoria: categoriaNueva,
+      precio: precioNuevo,
+      imagen: "", // puedes dejarla igual o mejorar después
+      galeria: "",
+      badge: ""
+    })
+  });
+
+  alert("Producto actualizado");
+  cargar();
+}
+
+// 🗑 ELIMINAR
 async function eliminar(id) {
   await fetch(API + "/productos/" + id, {
     method: "DELETE"
