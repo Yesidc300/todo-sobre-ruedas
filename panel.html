@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Panel Admin</title>
+<title>Panel Admin PRO</title>
 
 <style>
 body {
@@ -52,7 +52,7 @@ button {
 
 <body>
 
-<h2>📦 Panel Admin</h2>
+<h2>📦 Panel Admin PRO</h2>
 
 <div class="form">
   <input id="nombre" placeholder="Nombre">
@@ -63,6 +63,7 @@ button {
   <input type="file" id="imagenFile">
 
   <button onclick="crear()">Crear Producto</button>
+  <button onclick="actualizar()">Actualizar Producto</button>
 </div>
 
 <div id="lista"></div>
@@ -70,7 +71,6 @@ button {
 <script>
 const API = "https://backend-catalogo-r31s.onrender.com";
 
-// 🔐 Validación admin
 if (!localStorage.getItem("admin")) {
   alert("No autorizado");
   window.location.href = "admin.html";
@@ -80,6 +80,8 @@ if (!localStorage.getItem("admin")) {
 const CLOUD_NAME = "dlnw3ss7h";
 const UPLOAD_PRESET = "unsigned_preset";
 
+let productoEditando = null;
+
 // 📤 Subir imagen
 async function subirImagen(file) {
   const formData = new FormData();
@@ -88,10 +90,7 @@ async function subirImagen(file) {
 
   const res = await fetch(
     `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-    {
-      method: "POST",
-      body: formData
-    }
+    { method: "POST", body: formData }
   );
 
   const data = await res.json();
@@ -102,10 +101,7 @@ async function subirImagen(file) {
 async function crear() {
   const file = imagenFile.files[0];
 
-  if (!file) {
-    alert("Selecciona una imagen");
-    return;
-  }
+  if (!file) return alert("Selecciona imagen");
 
   const imagenUrl = await subirImagen(file);
 
@@ -123,7 +119,60 @@ async function crear() {
     })
   });
 
+  limpiar();
   cargar();
+}
+
+// ✏️ CARGAR EN FORMULARIO
+function editar(p) {
+  productoEditando = p.id;
+
+  nombre.value = p.nombre;
+  descripcion.value = p.descripcion;
+  categoria.value = p.categoria;
+  precio.value = p.precio;
+}
+
+// 🔄 ACTUALIZAR
+async function actualizar() {
+  if (!productoEditando) {
+    return alert("Selecciona un producto para editar");
+  }
+
+  let imagenUrl = "";
+
+  const file = imagenFile.files[0];
+
+  if (file) {
+    imagenUrl = await subirImagen(file);
+  }
+
+  await fetch(API + "/productos/" + productoEditando, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      nombre: nombre.value,
+      descripcion: descripcion.value,
+      categoria: categoria.value,
+      precio: precio.value,
+      imagen: imagenUrl,
+      galeria: "",
+      badge: ""
+    })
+  });
+
+  limpiar();
+  cargar();
+}
+
+// 🧹 LIMPIAR FORM
+function limpiar() {
+  nombre.value = "";
+  descripcion.value = "";
+  categoria.value = "";
+  precio.value = "";
+  imagenFile.value = "";
+  productoEditando = null;
 }
 
 // 🔄 CARGAR
@@ -142,46 +191,16 @@ async function cargar() {
         ${p.descripcion}<br>
         💲 ${p.precio}<br>
 
-        <button onclick="editar(${p.id})">Editar</button>
+        <button onclick='editar(${JSON.stringify(p)})'>Editar</button>
         <button onclick="eliminar(${p.id})">Eliminar</button>
       </div>
     `;
   });
 }
 
-// ✏️ EDITAR (IMPORTANTE)
-async function editar(id) {
-  const nombreNuevo = prompt("Nuevo nombre:");
-  const descripcionNueva = prompt("Nueva descripción:");
-  const categoriaNueva = prompt("Nueva categoría:");
-  const precioNuevo = prompt("Nuevo precio:");
-
-  if (!nombreNuevo) return;
-
-  await fetch(API + "/productos/" + id, {
-    method: "PUT",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      nombre: nombreNuevo,
-      descripcion: descripcionNueva,
-      categoria: categoriaNueva,
-      precio: precioNuevo,
-      imagen: "", // puedes dejarla igual o mejorar después
-      galeria: "",
-      badge: ""
-    })
-  });
-
-  alert("Producto actualizado");
-  cargar();
-}
-
 // 🗑 ELIMINAR
 async function eliminar(id) {
-  await fetch(API + "/productos/" + id, {
-    method: "DELETE"
-  });
-
+  await fetch(API + "/productos/" + id, { method: "DELETE" });
   cargar();
 }
 
